@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MvcApplication1.Models.ProfileModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                To learn more about ASP.NET MVC visit
+                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET MVC.
+                If you have any questions about ASP.NET MVC visit
+                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">our forums</a>.
+            </p>
+        </div>
+    </section>
+}
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var profile in Model)
+        {
+            <tr>
+                <td>@profile.Id</td>
+                <td>@profile.FirstName</td>
+                <td>@profile.LastName</td>
+                <td>@profile.Email</td>
+                <td>@profile.Phone</td>
+                <td>
+                    <a href="@Url.Action("EditProfile", "Home", new {id = profile.Id})">Edit</a>
+                    <a href="@Url.Action("Delete", "Home", new{ id = profile.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,15 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Submit delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete confirmation</h2>
+
+@using (Html.BeginForm("DeleteSubmit", "Home"))
+{
+    <input type="hidden" value="@ViewBag.Id" name="Id" />
+    <p>@ViewBag.Message</p>
+    <input type="submit"/>
+}
